@@ -1,0 +1,42 @@
+// Reference schema — actual database is managed by sql.js (src/database.ts)
+// This file documents the data model for reference purposes.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Doctor {
+  id              String    @id @default(uuid())
+  name            String
+  specialization  String
+  experience      Int
+  consultationFee Float
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  slots           Slot[]
+  bookings        Booking[]
+}
+
+model Slot {
+  id       String  @id @default(uuid())
+  doctorId String
+  slotTime String
+  isBooked Boolean @default(false)
+  doctor   Doctor  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, slotTime])
+}
+
+model Booking {
+  id        String   @id @default(uuid())
+  doctorId  String
+  userName  String
+  slotTime  String
+  createdAt DateTime @default(now())
+  doctor    Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+}

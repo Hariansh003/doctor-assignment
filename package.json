@@ -1,0 +1,14 @@
+{
+  "name": "hariansh-doctor-assig-project",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "install": "cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "build": "cd frontend && npm run build",
+    "seed": "cd backend && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
