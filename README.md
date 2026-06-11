@@ -60,11 +60,9 @@ doctor-consultation-app/
 
 ```bash
 # 1. Install all dependencies (root, backend, frontend)
-npm install
-cd backend && npm install && cd ../frontend && npm install && cd ..
 
 # 2. Seed the database with sample data
-cd backend && npm run seed && cd ..
+cd backend && npm run seed 
 
 # 3. Start both servers
 npm run dev
@@ -73,21 +71,7 @@ npm run dev
 The application will be available at:
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:3001
-
-### Manual Setup
-
-```bash
-# Backend
-cd backend
-npm install
-npm run seed
-npm run dev
-
-# Frontend (in a new terminal)
-cd frontend
-npm install
-npm run dev
-```
+- ** For adming acess** : Username - admin , Password - admin123
 
 ## API Documentation
 
@@ -157,17 +141,11 @@ npm run dev
 7. **Vite Proxy**: The frontend Vite dev server proxies `/api` requests to the backend, avoiding CORS issues during development.
 
 ## Assumptions
-
 - No authentication is required (as specified in the assignment constraints)
 - Slot times are stored as ISO 8601 datetime strings
-- Consultation fees are in INR (₹)
-- Slots are 1-hour blocks
 - Once a slot is booked, it cannot be cancelled (no cancellation feature)
 - The seed data generates slots for the next 7 days with standard clinic hours (9 AM – 5 PM)
 
-## Screenshots
-
-> Screenshots can be added here after running the application.
 
 | Page | Description |
 |------|-------------|
